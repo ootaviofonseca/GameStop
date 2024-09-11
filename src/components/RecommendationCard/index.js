@@ -7,7 +7,7 @@ const Card = styled.div`
     justify-content: space-between;
     padding: 20px;
     width: ${props => props.width || '600px'};
-    height: ${props => props.height || '300px'};
+    height: ${props => props.height || '250px'};
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -50,6 +50,7 @@ const GameImage = styled.img`
     border-radius: 10px;
     box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 15px;
+    align-self: center;
 `;
 
 const Button = styled.button`
@@ -62,6 +63,7 @@ const Button = styled.button`
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 30px;
 
     &:hover {
     background-color: #70d6ff;

@@ -26,8 +26,8 @@ const Slide = styled.div`
 const GameCard = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    {/*align-items: center;
+    justify-content: center;*/}
     width: 185px;
     height: 225px;
     background-color: rgba(255, 255, 255, 0.8);
@@ -47,6 +47,7 @@ const GameImage = styled.img`
     height: 220px; 
     border-radius: 10px;
     margin-bottom: 10px;
+    align-self: center;
 `;
 
 
