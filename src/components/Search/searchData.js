@@ -1,10 +1,10 @@
-import codMW from '../../imagens/CallofDutyModernWarfare(2019).jpg';
-import fortnite from '../../imagens/Fortnite.jpg';
-import lol from '../../imagens/lol.jpg';
-import valorant from '../../imagens/Valorant.jpg';
-import amongUs from '../../imagens/AmongUs.jpg';
-import minecraft from '../../imagens/Minecraft_capa.png';
-import codWarzone from '../../imagens/codW.jpg';
+import codMW from '../../images/CallofDutyModernWarfare(2019).jpg';
+import fortnite from '../../images/Fortnite.jpg';
+import lol from '../../images/lol.jpg';
+import valorant from '../../images/Valorant.jpg';
+import amongUs from '../../images/AmongUs.jpg';
+import minecraft from '../../images/Minecraft_capa.png';
+import codWarzone from '../../images/codW.jpg';
 export const games = [
     { 
         id: 1, 

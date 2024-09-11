@@ -1,5 +1,5 @@
-import profile from '../../imagens/profile.svg';
-import store from '../../imagens/store.svg';
+import profile from '../../images/profile.svg';
+import store from '../../images/store.svg';
 import styled from 'styled-components';
 
 const Icon = styled.li`

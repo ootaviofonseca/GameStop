@@ -1,6 +1,6 @@
-import codMW from '../../imagens/CallofDutyModernWarfare(2019).jpg';
-import fortnite from '../../imagens/Fortnite.jpg';
-import lol from '../../imagens/lol.jpg';
+import codMW from '../../images/CallofDutyModernWarfare(2019).jpg';
+import fortnite from '../../images/Fortnite.jpg';
+import lol from '../../images/lol.jpg';
 
 export const games = [
     { 
