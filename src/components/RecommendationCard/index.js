@@ -6,8 +6,8 @@ const Card = styled.div`
     flex-direction: row; 
     justify-content: space-between;
     padding: 20px;
-    width: 600px;
-    height: 200px;
+    width: ${props => props.width || '600px'};
+    height: ${props => props.height || '300px'};
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -27,12 +27,6 @@ const TextContainer = styled.div`
     align-items: center;
     width: 60%;
     gap: 5px;
-`;
-
-const ImageButtonContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
 `;
 
 const Subtitle = styled.h4`
