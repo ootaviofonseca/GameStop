@@ -54,4 +54,4 @@ module.exports = {
     createGame,
     updateGame,
     removeGame,
-}
+}   

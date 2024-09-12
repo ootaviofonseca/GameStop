@@ -15,8 +15,13 @@ function getGames(req, res) {
 function getGame(req, res) {
     try {
         const id = req.params.id
-        const game = getGameByID(id)
-        res.send(game)
+        if (!isNaN(id)) {
+            const game = getGameByID(id)
+            res.send(game)
+        }else{
+            res.status(422)
+            res.send('Invalid ID')
+        }
     }
     catch (error) {
         res.status(500)
@@ -40,10 +45,14 @@ function postGame(req, res) {
 function patchGame(req, res) {
     try {
         const id = req.params.id
-        const updates = req.body
-        updateGame(updates, id)
-
-        res.send('Game updated')
+        if (!isNaN(id)) {
+            const updates = req.body
+            updateGame(updates, id)
+            res.send('Game updated')
+        }else{
+            res.status(422)
+            res.send('Invalid ID')
+        }
     }
     catch (error) {
         res.status(500)
@@ -54,9 +63,13 @@ function patchGame(req, res) {
 function deleteGame(req, res) {
     try {
         const id = req.params.id
-        removeGame(id)
-
-        res.send('Game deleted')
+        if (!isNaN(id)) {
+            removeGame(id)
+            res.send('Game deleted')
+        }else{
+            res.status(422)
+            res.send('Invalid ID')
+        }
     }
     catch (error) {
         res.status(500)
