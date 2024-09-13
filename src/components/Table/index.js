@@ -3,7 +3,8 @@ import styled from "styled-components";
 export  const Title = styled.h2`
     font-size: 36px;
     text-align: center;
-    color: #fff; 
+    color: #fff;
+    margin-top: -50px;
     width: 100%;
     letter-spacing: 1.5px; 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -55,6 +56,7 @@ export const Button = styled.button`
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    margin-left : ${props => props.margin || '0'};
     transition: background-color 0.3s ease, transform 0.3s ease;
 
     &:hover {

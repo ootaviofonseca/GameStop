@@ -6,4 +6,4 @@ export const ScreenContainer = styled.section`
     padding: 85px 0;
     width: 80%;
     align-self: center;
-`;
+`

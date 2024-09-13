@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { getMyGames, deleteMyGame } from "../../services/mygames";
 import { Table, Button,GameImage,TableHeader,TableCell,TableRow,Title } from "../Table"

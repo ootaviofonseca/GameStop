@@ -7,7 +7,6 @@ import { Table, Button,GameImage,TableHeader,TableCell,TableRow } from "../Table
 import { ScreenContainer } from "../ContainerScreen";
 
 
-
 const Title = styled.h2`
     font-size: 36px;
     text-align: center;
@@ -17,7 +16,6 @@ const Title = styled.h2`
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-transform: uppercase; 
 `;
-
 
 
 

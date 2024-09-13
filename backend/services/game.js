@@ -1,5 +1,4 @@
 const { create } = require('domain')
-const fs = require('fs')
 const { get } = require('http')
 const pool = require('../db/db')
 
