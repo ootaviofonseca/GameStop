@@ -1,6 +1,4 @@
-import Header from './components/Header';  
-import Search from './components/Search';
-import LatestReleases from './components/LatestReleases'; 
+import FavoritesComponets from '../components/Favorites';
 import styled from 'styled-components';
 
 
@@ -12,15 +10,13 @@ const AppContainer = styled.div`
   flex-direction: column;
 `;
 
-function App() {
+function Favorites() {
   return (
     <AppContainer>
-        <Header />
-        <Search />
-        <LatestReleases />
+        <FavoritesComponets/>
     </AppContainer>
     
   );
 }
 
-export default App;
+export default Favorites;

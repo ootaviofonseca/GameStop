@@ -1,1 +1,58 @@
-[{"id":1,"name":"Game 1","description":"Description 1","price":10,"image":"https://via.placeholder.com/150"},{"id":2,"name":"Game 2","description":"Description 2","price":20,"image":"https://via.placeholder.com/150"},{"id":3,"name":"Game 3","description":"Description 3","price":30,"image":"https://via.placeholder.com/150"},{"id":4,"name":"Game 4","description":"Description 4","price":40,"image":"https://via.placeholder.com/150"},{"id":5,"name":"Game 5","description":"Description 5","price":50,"image":"https://via.placeholder.com/150"},{"id":6,"name":"Game 6","description":"Description 6","price":60,"image":"https://via.placeholder.com/150"}]
+[
+    { 
+        "id": 1, 
+        "name": "Call of Duty: Modern Warfare", 
+        "platform": "PC", 
+        "rating": 4.5, 
+        "src": "codmw.jpg"
+    },
+    { 
+        "id": 2, 
+        "name": "Fortnite", 
+        "platform": "PC", 
+        "rating": 4.0, 
+        "src": "fortnite.jpg"
+    },
+    { 
+        "id": 3, 
+        "name": "League of Legends", 
+        "platform": "PC", 
+        "rating": 4.8, 
+        "src": "lol.jpg"
+    },
+    { 
+        "id": 4, 
+        "name": "Valorant", 
+        "platform": "PC", 
+        "rating": 4.6, 
+        "src": "valorant.jpg"
+    },
+    { 
+        "id": 5, 
+        "name": "Among Us", 
+        "platform": "PC", 
+        "rating": 4.0, 
+        "src": "amongUs.jpg"
+    },
+    { 
+        "id": 6, 
+        "name": "Minecraft", 
+        "platform": "PC", 
+        "rating": 4.5, 
+        "src": "minecraft.jpg"
+    },
+    { 
+        "id": 7, 
+        "name": "Call of Duty: Warzone", 
+        "platform": "PC", 
+        "rating": 4.7, 
+        "src": "codWarzone.jpg"
+    },
+    { 
+        "id": 8, 
+        "name": "Tony Hawk's Pro Skater 1 + 2",
+        "platform": "PC",
+        "rating": 4.8,
+        "src": "tonyHawk.jpg"
+    }
+]

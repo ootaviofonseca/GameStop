@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const textOptions = ['CATEGORIES', 'MY GAMES', 'FAVORITES'];
@@ -16,11 +17,24 @@ const Option = styled.li`
   cursor: pointer;
   min-width: 120px;
 `
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit; 
+  &:hover {
+    color: inherit;
+  }
+`;
+
 function OptionsHeader () {
   return (
     <Options>
       {textOptions.map((text, index) => (
-        <Option key={index}>{text}</Option>
+        <StyledLink to= {`/${text.toLowerCase().replace(/\s+/g, '')}`}>
+          <Option key={index}>
+              {text}
+          </Option>
+        </StyledLink>
       ))}
     </Options>
     

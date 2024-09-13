@@ -32,6 +32,11 @@ function getGame(req, res) {
 function postGame(req, res) {
     try {
         const newGame = req.body 
+        if (!newGame.id || !newGame.name || !newGame.description || !newGame.price || !newGame.image ) {
+            res.status(422)
+            res.send('Please provide all fields')
+            return
+        }
         createGame(newGame)
         res.status(201)
         res.send('Game created')
@@ -76,6 +81,7 @@ function deleteGame(req, res) {
         res.send(error.message)
     }
 }
+
 
 module.exports = {
     getGames,

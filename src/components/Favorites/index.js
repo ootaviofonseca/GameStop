@@ -1,51 +1,35 @@
-import Input from "../Input";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { getGames } from "../../services/game";
-import { addFavorite } from "../../services/favorites";
+import { getFavorites, deleteFavorite } from "../../services/favorites";
 
-
-import codmwImg from "../../images/codmw.jpg";
-import fortniteImg from "../../images/Fortnite.jpg";
-import lolImg from "../../images/lol.jpg";
-import valorantImg from "../../images/Valorant.jpg";
-import amongUsImg from "../../images/AmongUs.jpg";
-import minecraftImg from "../../images/Minecraft.png";
-import codWarzoneImg from "../../images/codW.jpg";
-import tonyHawkImg from "../../images/Valorant.jpg";
 
 
 const SearchContainer = styled.section`
     color: #000;
     text-align: center;
     padding: 85px 0;
-    width: 100%;
+    width: 80%;
+    align-self: center;
 `;
 
 const Title = styled.h2`
     font-size: 36px;
     text-align: center;
-    color: #fff;
+    color: #fff; 
     width: 100%;
     letter-spacing: 1.5px; 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-transform: uppercase; 
 `;
 
-const SubTitle = styled.h3`
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 40px;
-`;
-
 const Table = styled.table`
-    width: 80%;
+    width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    margin-left: 10%;
     border-radius: 15px; 
     overflow: hidden; 
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    align-self: center;
 `;
 
 const TableHeader = styled.th`
@@ -75,7 +59,6 @@ const GameImage = styled.img`
     width: 100px;
     height: auto;
 `;
-
 const Button = styled.button`
     background-color: #007bff;
     color: #fff;
@@ -99,62 +82,27 @@ const Button = styled.button`
     }
 `;
 
-function Search() {
-    const [searchedGames, setSearchedGames] = useState([])
-    const [games,setGames] = useState([])
+function Favorites() {
+    const [games,setFavorites] = useState([])
 
     useEffect(() => {
         fetchGames()
     }, [])
 
     async function fetchGames() {
-        const apiGames =  await getGames()
-        setGames(apiGames)
+        const apiFavorites =  await getFavorites()
+        setFavorites(apiFavorites)
     }
 
-    async function insertFavorite(id){
-        await addFavorite(id)
-        alert ("Game added to favorites")   
-    }
-
-    function getImageSrc(src) {
-        switch (src) {
-            case "codmw.jpg":
-                return codmwImg;
-            case "fortnite.jpg":
-                return fortniteImg;
-            case "lol.jpg":
-                return lolImg;
-            case "valorant.jpg":
-                return valorantImg;
-            case "amongUs.jpg":
-                return amongUsImg;
-            case "minecraft.jpg":
-                return minecraftImg;
-            case "codWarzone.jpg":
-                return codWarzoneImg;
-            case "tonyHawk.jpg":
-                return tonyHawkImg;
-            default:
-                return null;
-        }
+    async function removeFavorite(id) {
+        await deleteFavorite(id)
+        fetchGames()
+        
     }
 
     return (
         <SearchContainer>
-            <Title>Find your game !</Title>
-             {/*<SubTitle>Found Your Game</SubTitle>*/}
-            <Input 
-                placeholder="Search for a game"
-                onBlur={(event) => {
-                    const typedText = event.target.value.toLowerCase()
-                    const result = games.filter(game => game.name.toLowerCase().includes(typedText))
-                    setSearchedGames(result);
-                }}
-
-            />
-
-            {searchedGames.length > 0 && (
+            <Title width = '50%'>Your Favorites!</Title>
                 <Table>
                     <thead>
                         <tr>
@@ -162,29 +110,28 @@ function Search() {
                             <TableHeader>Platform</TableHeader>
                             <TableHeader>Rating</TableHeader>
                             <TableHeader>Image</TableHeader>
-                            <TableHeader>Actions</TableHeader>
+                            <TableHeader>Remove</TableHeader>
                         </tr>
                     </thead>
                     <tbody>
-                        {searchedGames.map(game => (
-                            <TableRow key={game.id} >
+                        {games.map((game, index) => (
+                            <TableRow key={index}>
                                 <TableCell>{game.name}</TableCell>
                                 <TableCell>{game.platform}</TableCell>
                                 <TableCell>{game.rating}</TableCell>
                                 <TableCell>
-                                <GameImage src={getImageSrc(game.src)} alt={game.name} />
+                                    <GameImage src={game.image} alt={game.name} />
                                 </TableCell>
                                 <TableCell>
-                                    <Button onClick={() => insertFavorite(game.id)}>+</Button> 
+                                    <Button onClick={() => removeFavorite(game.id)}>-</Button>
                                 </TableCell>
-                                
                             </TableRow>
                         ))}
                     </tbody>
                 </Table>
-            )}
+            
         </SearchContainer>
     );
 }
 
-export default Search;
+export default Favorites;

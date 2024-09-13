@@ -1,4 +1,4 @@
-import codMW from '../../images/CallofDutyModernWarfare(2019).jpg';
+import codMW from '../../images/codmw.jpg';
 import fortnite from '../../images/Fortnite.jpg';
 import lol from '../../images/lol.jpg';
 
