@@ -10,7 +10,6 @@ function getImageSrc(id) {
     return images(`./${id}.jpg`);
 }
 
-
 function MyGames() {
     const [games,setMyGames] = useState([])
 
@@ -32,6 +31,10 @@ function MyGames() {
     return (
         <ScreenContainer>
             <Title width = '30%'>My Games!</Title>
+            {games.length === 0 ? (
+                <Title width = '70%'>Too bad, you don't have games
+                Go to our store and buy some for yourself</Title>
+            ) : (
                 <Table>
                     <thead>
                         <tr>
@@ -43,7 +46,7 @@ function MyGames() {
                         </tr>
                     </thead>
                     <tbody>
-                        {games.map((game, index) => (
+                        {games.map((game) => (
                             <TableRow key={game.id}>
                                 <TableCell>{game.name}</TableCell>
                                 <TableCell>{game.platform}</TableCell>
@@ -58,7 +61,7 @@ function MyGames() {
                         ))}
                     </tbody>
                 </Table>
-            
+            )}
         </ScreenContainer>
     );
 }
