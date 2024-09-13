@@ -1,11 +1,8 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { getFavorites, deleteFavorite } from "../../services/favorites";
-import { Table, Button,GameImage,TableHeader,TableCell,TableRow,Title } from "../Table";
-import { ScreenContainer } from "../ContainerScreen";
-
-
-
+import { getMyGames, deleteMyGame } from "../../services/mygames";
+import { Table, Button,GameImage,TableHeader,TableCell,TableRow,Title } from "../Table"
+import { ScreenContainer } from "../ContainerScreen"
 
 const images = require.context('../../images', false, /\.(jpg)$/);
 
@@ -13,27 +10,28 @@ function getImageSrc(id) {
     return images(`./${id}.jpg`);
 }
 
-function Favorites() {
-    const [games,setFavorites] = useState([])
+
+function MyGames() {
+    const [games,setMyGames] = useState([])
 
     useEffect(() => {
         fetchGames()
     }, [])
 
     async function fetchGames() {
-        const apiFavorites =  await getFavorites()
-        setFavorites(apiFavorites)
+        const apiMyGames =  await getMyGames()
+        setMyGames(apiMyGames)
     }
 
-    async function removeFavorite(id) {
-        await deleteFavorite(id)
+    async function removeMyGame(id) {
+        await deleteMyGame(id)
         fetchGames()
         
     }
 
     return (
         <ScreenContainer>
-            <Title width = '50%'>Your Favorites!</Title>
+            <Title width = '30%'>My Games!</Title>
                 <Table>
                     <thead>
                         <tr>
@@ -54,7 +52,7 @@ function Favorites() {
                                     <GameImage src={getImageSrc(game.game_id)} alt={game.name} />
                                 </TableCell>
                                 <TableCell>
-                                    <Button onClick={() => removeFavorite(game.game_id)}>-</Button>
+                                    <Button onClick={() => removeMyGame(game.game_id)}>-</Button>
                                 </TableCell>
                             </TableRow>
                         ))}
@@ -65,4 +63,4 @@ function Favorites() {
     );
 }
 
-export default Favorites;
+export default MyGames;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const textOptions = ['CATEGORIES', 'MY GAMES', 'FAVORITES'];
+const textOptions = ['MY GAMES', 'FAVORITES'];
 
 const Options = styled.ul`
   display: flex;

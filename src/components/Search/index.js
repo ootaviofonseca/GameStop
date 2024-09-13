@@ -3,15 +3,10 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { getGames } from "../../services/game";
 import { addFavorite } from "../../services/favorites";
+import { Table, Button,GameImage,TableHeader,TableCell,TableRow } from "../Table";
+import { ScreenContainer } from "../ContainerScreen";
 
 
-
-const SearchContainer = styled.section`
-    color: #000;
-    text-align: center;
-    padding: 85px 0;
-    width: 100%;
-`;
 
 const Title = styled.h2`
     font-size: 36px;
@@ -23,72 +18,8 @@ const Title = styled.h2`
     text-transform: uppercase; 
 `;
 
-const SubTitle = styled.h3`
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 40px;
-`;
 
-const Table = styled.table`
-    width: 80%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    margin-left: 10%;
-    border-radius: 15px; 
-    overflow: hidden; 
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
-`;
 
-const TableHeader = styled.th`
-    background-color: #f2f2f2;
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-    font-weight: bold;
-`;
-
-const TableRow = styled.tr`
-    &:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    &:nth-child(odd) {
-        background-color: #ffffff; 
-    }
-`;
-
-const TableCell = styled.td`
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-`;
-
-const GameImage = styled.img`
-    width: 100px;
-    height: auto;
-`;
-
-const Button = styled.button`
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-
-    &:hover {
-        background-color: #0056b3;
-    }
-
-    &:active {
-        transform: scale(0.98);
-    }
-
-    &:focus {
-        outline: none;
-    }
-`;
 
 const images = require.context('../../images', false, /\.(jpg)$/);
 
@@ -117,9 +48,9 @@ function Search() {
 
 
     return (
-        <SearchContainer>
+        <ScreenContainer>
             <Title>Find your game !</Title>
-             {/*<SubTitle>Found Your Game</SubTitle>*/}
+             
             <Input 
                 placeholder="Search for a game"
                 onBlur={(event) => {
@@ -159,7 +90,7 @@ function Search() {
                     </tbody>
                 </Table>
             )}
-        </SearchContainer>
+        </ScreenContainer>
     );
 }
 

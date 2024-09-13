@@ -6,6 +6,7 @@ import { createGlobalStyle } from 'styled-components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Favorites from './routes/Favorites';
+import MyGames from './routes/MyGames';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -38,6 +39,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/favorites" element={<Favorites />} />
+        < Route path = "/mygames" element = {<MyGames />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

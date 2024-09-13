@@ -1,4 +1,4 @@
-import FavoritesComponets from '../components/Favorites';
+import MyGamesComponent from '../components/MyGames';
 import styled from 'styled-components';
 
 
@@ -10,13 +10,13 @@ const AppContainer = styled.div`
   flex-direction: column;
 `;
 
-function Favorites() {
+function MyGames() {
   return (
     <AppContainer>
-        <FavoritesComponets/>
+        <MyGamesComponent/>
     </AppContainer>
     
   );
 }
 
-export default Favorites;
+export default MyGames;
