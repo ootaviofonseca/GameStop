@@ -1,6 +1,6 @@
-import codMW from '../../images/codmw.jpg';
-import fortnite from '../../images/Fortnite.jpg';
-import lol from '../../images/lol.jpg';
+import codMW from '../../images/1.jpg';
+import fortnite from '../../images/2.jpg';
+import lol from '../../images/3.jpg';
 
 export const games = [
     { 

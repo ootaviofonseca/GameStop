@@ -82,6 +82,12 @@ const Button = styled.button`
     }
 `;
 
+const images = require.context('../../images', false, /\.(jpg)$/);
+
+function getImageSrc(id) {
+    return images(`./${id}.jpg`);
+}
+
 function Favorites() {
     const [games,setFavorites] = useState([])
 
@@ -115,15 +121,15 @@ function Favorites() {
                     </thead>
                     <tbody>
                         {games.map((game, index) => (
-                            <TableRow key={index}>
+                            <TableRow key={game.id}>
                                 <TableCell>{game.name}</TableCell>
                                 <TableCell>{game.platform}</TableCell>
                                 <TableCell>{game.rating}</TableCell>
                                 <TableCell>
-                                    <GameImage src={game.image} alt={game.name} />
+                                    <GameImage src={getImageSrc(game.game_id)} alt={game.name} />
                                 </TableCell>
                                 <TableCell>
-                                    <Button onClick={() => removeFavorite(game.id)}>-</Button>
+                                    <Button onClick={() => removeFavorite(game.game_id)}>-</Button>
                                 </TableCell>
                             </TableRow>
                         ))}

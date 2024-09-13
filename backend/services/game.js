@@ -1,53 +1,51 @@
 const { create } = require('domain')
 const fs = require('fs')
 const { get } = require('http')
+const pool = require('../db/db')
 
-function getAllGames() {
-    return JSON.parse(fs.readFileSync("games.json")) 
-}
-
-function getGameByID(id) {
-    const games = getAllGames()
-
-    const filterGame = games.filter(game => game.id == id)[0]
-
-    if (filterGame) {
-        return filterGame
-    } else {
-        throw new Error("Game not found")
+async function getAllGames() {
+    try {
+        const [rows] = await pool.query('SELECT * FROM games');
+        return rows;
+    } catch (error) {
+        throw new Error(error.message);
     }
 }
 
-function createGame(newGame) {
-    const games = getAllGames()
-    
-    const newGamesList = [...games, newGame]
-
-    fs.writeFileSync("games.json", JSON.stringify(newGamesList))
+async function getGameByID(id) {
+    try {
+        const [rows] = await pool.query(`SELECT * FROM games WHERE id = ${id}`);
+        return rows;
+    } catch (error) {
+        throw new Error( error.message);
+    }
 }
 
-function updateGame(updates, id) {
-    let games = getAllGames()
-    
-    const gameIndex = games.findIndex(game => game.id == id)
-
-    const updatedGame = {...games[gameIndex], ...updates}
-
-    games[gameIndex] = updatedGame
-
-    fs.writeFileSync("games.json", JSON.stringify(games))
+async function createGame(game) {
+    try {
+        const { name, description, price, image } = game;
+        await pool.query(`INSERT INTO games (name, description, price, image) VALUES ('${name}', '${description}', ${price}, '${image}')`);
+    } catch (error) {
+        throw new Error(error.message);
+    }
 }
 
-function removeGame(id) {
-    let games = getAllGames()
-
-    const gameIndex = games.findIndex(game => game.id == id)
-
-    games.splice(gameIndex, 1)
-
-    fs.writeFileSync("games.json", JSON.stringify(games))
+async function updateGame(updates, id) {
+    try {
+        const { name, description, price, image } = updates;
+        await pool.query(`UPDATE games SET name = '${name}', description = '${description}', price = ${price}, image = '${image}' WHERE id = ${id}`);
+    } catch (error) {
+        throw new Error(error.message);
+    }
 }
 
+async function removeGame(id) {
+    try {
+        await pool.query(`DELETE FROM games WHERE id = ${id}`);
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
 
 module.exports = { 
     getAllGames,

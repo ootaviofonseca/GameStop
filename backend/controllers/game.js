@@ -1,87 +1,56 @@
 
 const { getAllGames,getGameByID, createGame,updateGame,removeGame} = require('../services/game')
 
-function getGames(req, res) {
+
+async function getGames(req, res) {
     try {
-        const games = getAllGames()
-        res.send(games)
-    }
-    catch (error) {
-        res.status(500)
-        res.send(error.message)
+        const games = await getAllGames();
+        res.send(games);
+    } catch (error) {
+        res.status(500).send(error.message);
     }
 }
 
-function getGame(req, res) {
+async function getGame(req, res) {
+    const { id } = req.params;
     try {
-        const id = req.params.id
-        if (!isNaN(id)) {
-            const game = getGameByID(id)
-            res.send(game)
-        }else{
-            res.status(422)
-            res.send('Invalid ID')
-        }
-    }
-    catch (error) {
-        res.status(500)
-        res.send(error.message)
+        const games = await getGameByID(id);
+        res.send(games);
+    } catch (error) {
+        res.status(500).send(error.message);
     }
 }
 
-function postGame(req, res) {
+async function postGame(req, res) {
+    const game = req.body;
     try {
-        const newGame = req.body 
-        if (!newGame.id || !newGame.name || !newGame.description || !newGame.price || !newGame.image ) {
-            res.status(422)
-            res.send('Please provide all fields')
-            return
-        }
-        createGame(newGame)
-        res.status(201)
-        res.send('Game created')
-    }
-    catch (error) {
-        res.status(500)
-        res.send(error.message)
+        await createGame(game);
+        res.send('Game created');
+    } catch (error) {
+        res.status(500).send(error.message);
     }
 }
 
-function patchGame(req, res) {
+async function patchGame(req, res) {
+    const { id } = req.params;
+    const updates = req.body;
     try {
-        const id = req.params.id
-        if (!isNaN(id)) {
-            const updates = req.body
-            updateGame(updates, id)
-            res.send('Game updated')
-        }else{
-            res.status(422)
-            res.send('Invalid ID')
-        }
-    }
-    catch (error) {
-        res.status(500)
-        res.send(error.message)
+        await updateGame(updates, id);
+        res.send('Game updated');
+    } catch (error) {
+        res.status(500).send(error.message);
     }
 }
 
-function deleteGame(req, res) {
+async function deleteGame(req, res) {
+    const { id } = req.params;
     try {
-        const id = req.params.id
-        if (!isNaN(id)) {
-            removeGame(id)
-            res.send('Game deleted')
-        }else{
-            res.status(422)
-            res.send('Invalid ID')
-        }
-    }
-    catch (error) {
-        res.status(500)
-        res.send(error.message)
+        await removeGame(id);
+        res.send('Game removed');
+    } catch (error) {
+        res.status(500).send(error.message);
     }
 }
-
 
 module.exports = {
     getGames,

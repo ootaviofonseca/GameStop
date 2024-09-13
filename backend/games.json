@@ -4,55 +4,48 @@
         "name": "Call of Duty: Modern Warfare", 
         "platform": "PC", 
         "rating": 4.5, 
-        "src": "codmw.jpg"
+        "src": "../../images/codmw.jpg"
     },
     { 
         "id": 2, 
         "name": "Fortnite", 
         "platform": "PC", 
         "rating": 4.0, 
-        "src": "fortnite.jpg"
+        "src": "../../images/Fortnite.jpg"
     },
     { 
         "id": 3, 
         "name": "League of Legends", 
         "platform": "PC", 
         "rating": 4.8, 
-        "src": "lol.jpg"
+        "src": "../../images/lol.jpg"
     },
     { 
         "id": 4, 
         "name": "Valorant", 
         "platform": "PC", 
         "rating": 4.6, 
-        "src": "valorant.jpg"
+        "src": "../../images/Valorant.jpg"
     },
     { 
         "id": 5, 
         "name": "Among Us", 
         "platform": "PC", 
         "rating": 4.0, 
-        "src": "amongUs.jpg"
+        "src": "../../images/amongUs.jpg"
     },
     { 
         "id": 6, 
         "name": "Minecraft", 
         "platform": "PC", 
         "rating": 4.5, 
-        "src": "minecraft.jpg"
+        "src": "../../images/Minecraft.jpg"
     },
     { 
         "id": 7, 
         "name": "Call of Duty: Warzone", 
         "platform": "PC", 
         "rating": 4.7, 
-        "src": "codWarzone.jpg"
-    },
-    { 
-        "id": 8, 
-        "name": "Tony Hawk's Pro Skater 1 + 2",
-        "platform": "PC",
-        "rating": 4.8,
-        "src": "tonyHawk.jpg"
+        "src": "../../images/codW.jpg"
     }
 ]

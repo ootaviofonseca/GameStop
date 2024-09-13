@@ -2,30 +2,35 @@ const { create } = require('domain')
 const fs = require('fs')
 const { get } = require('http')
 const { getAllGames } = require('./game')
+const pool = require('../db/db')
 
-function getFavorites() {
-    return JSON.parse(fs.readFileSync("favorites.json")) 
+async function getFavorites() {
+    try {
+        const [rows] = await pool.query('SELECT game_id, name, platform, rating, src FROM games INNER JOIN favorites ON games.id = favorites.game_id');
+        return rows;
+    } catch (error) {
+        throw new Error( error.message);
+    }
 }
 
-function removeFavorite(id) {
-    const favorites = getFavorites()
-    const newFavorites = favorites.filter(favorite => favorite.id !== Number(id))
-    fs.writeFileSync("favorites.json", JSON.stringify(newFavorites))
+async function removeFavorite(id) {
+    try
+    {
+        await pool.query('DELETE FROM favorites WHERE game_id = ?', [id]    );
+    } 
+    catch (error) {
+        throw new Error( error.message);
+    }
 }
 
-function addFavorite(id) {
-    const games = getAllGames()
-    const favorites = getFavorites()
-
-    const newFavorite = games.find(game => game.id === Number(id))
-
-    const newFavorites = [...favorites, newFavorite]
-
-
-   fs.writeFileSync("favorites.json", JSON.stringify(newFavorites))
+async function addFavorite(favorite) {
+    try {
+        const { game_id } = favorite;
+        await pool.query(`INSERT INTO favorites (game_id) VALUES (${game_id})`);
+    } catch (error) {
+        throw new Error( error.message);
+    }
 }
-
-
 
 module.exports = {
     getFavorites,

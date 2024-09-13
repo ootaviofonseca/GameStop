@@ -5,15 +5,6 @@ import { getGames } from "../../services/game";
 import { addFavorite } from "../../services/favorites";
 
 
-import codmwImg from "../../images/codmw.jpg";
-import fortniteImg from "../../images/Fortnite.jpg";
-import lolImg from "../../images/lol.jpg";
-import valorantImg from "../../images/Valorant.jpg";
-import amongUsImg from "../../images/AmongUs.jpg";
-import minecraftImg from "../../images/Minecraft.png";
-import codWarzoneImg from "../../images/codW.jpg";
-import tonyHawkImg from "../../images/Valorant.jpg";
-
 
 const SearchContainer = styled.section`
     color: #000;
@@ -61,7 +52,7 @@ const TableRow = styled.tr`
         background-color: #f9f9f9;
     }
     &:nth-child(odd) {
-        background-color: #ffffff; /* Cor de fundo para as linhas ímpares */
+        background-color: #ffffff; 
     }
 `;
 
@@ -99,6 +90,13 @@ const Button = styled.button`
     }
 `;
 
+const images = require.context('../../images', false, /\.(jpg)$/);
+
+function getImageSrc(id) {
+    return images(`./${id}.jpg`);
+}
+
+
 function Search() {
     const [searchedGames, setSearchedGames] = useState([])
     const [games,setGames] = useState([])
@@ -117,28 +115,6 @@ function Search() {
         alert ("Game added to favorites")   
     }
 
-    function getImageSrc(src) {
-        switch (src) {
-            case "codmw.jpg":
-                return codmwImg;
-            case "fortnite.jpg":
-                return fortniteImg;
-            case "lol.jpg":
-                return lolImg;
-            case "valorant.jpg":
-                return valorantImg;
-            case "amongUs.jpg":
-                return amongUsImg;
-            case "minecraft.jpg":
-                return minecraftImg;
-            case "codWarzone.jpg":
-                return codWarzoneImg;
-            case "tonyHawk.jpg":
-                return tonyHawkImg;
-            default:
-                return null;
-        }
-    }
 
     return (
         <SearchContainer>
@@ -153,7 +129,7 @@ function Search() {
                 }}
 
             />
-
+            
             {searchedGames.length > 0 && (
                 <Table>
                     <thead>
@@ -172,7 +148,7 @@ function Search() {
                                 <TableCell>{game.platform}</TableCell>
                                 <TableCell>{game.rating}</TableCell>
                                 <TableCell>
-                                <GameImage src={getImageSrc(game.src)} alt={game.name} />
+                                    <GameImage src={getImageSrc(game.id)} alt={game.name} />
                                 </TableCell>
                                 <TableCell>
                                     <Button onClick={() => insertFavorite(game.id)}>+</Button> 
