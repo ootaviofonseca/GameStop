@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { getGames } from "../../services/game";
 import { addFavorite } from "../../services/favorites";
-import { Table, Button,GameImage,TableHeader,TableCell,TableRow } from "../Table";
+import { Table, Button,GameImage,TableHeader,TableCell,TableRow, ButtonImg} from "../Table";
 import { ScreenContainer } from "../ContainerScreen";
+import star from "../../images/star.svg"
 
 
 const Title = styled.h2`
@@ -16,7 +17,6 @@ const Title = styled.h2`
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-transform: uppercase; 
 `;
-
 
 
 const images = require.context('../../images', false, /\.(jpg)$/);
@@ -80,7 +80,9 @@ function Search() {
                                     <GameImage src={getImageSrc(game.id)} alt={game.name} />
                                 </TableCell>
                                 <TableCell>
-                                    <Button onClick={() => insertFavorite(game.id)}>+</Button> 
+                                    <Button onClick={() => insertFavorite(game.id)}>
+                                        <ButtonImg src= {star} alt="Add to favorites" />
+                                    </Button> 
                                 </TableCell>
                                 
                             </TableRow>

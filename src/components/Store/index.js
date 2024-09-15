@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { addMyGame } from "../../services/mygames";
-import { Table, Button, GameImage, TableHeader, TableCell, TableRow, Title } from "../Table";
+import { Table, Button, GameImage, TableHeader, TableCell, TableRow, Title , ButtonImg } from "../Table";
 import { ScreenContainer } from "../ContainerScreen";
 import { getNotMyGames } from "../../services/store";
 import { getGames } from "../../services/game";
 import styled from "styled-components";
+import addcart from "../../images/addcart.svg";
 
 const images = require.context('../../images', false, /\.(jpg)$/);
 
@@ -74,7 +75,9 @@ function StoreAll() {
                                     <GameImage src={getImageSrc(game.id)} alt={game.name} />
                                 </TableCell>
                                 <TableCell>
-                                    <Button onClick={() => insertMyGame(game.id)}>BUY</Button>
+                                    <Button onClick={() => insertMyGame(game.id)}>
+                                        <ButtonImg src= {addcart}/>
+                                    </Button>
                                 </TableCell>
                             </TableRow>
                         ))}
@@ -126,7 +129,9 @@ function StoreNotMyGames() {
                                     <GameImage src={getImageSrc(game.id)} alt={game.name} />
                                 </TableCell>
                                 <TableCell>
-                                    <Button onClick={() => insertMyGame(game.id)}>BUY</Button>
+                                    <Button onClick={() => insertMyGame(game.id)}>
+                                        <ButtonImg src= {addcart}/>
+                                    </Button>
                                 </TableCell>
                             </TableRow>
                         ))}

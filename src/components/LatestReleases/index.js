@@ -9,25 +9,23 @@ import 'slick-carousel/slick/slick.css'; // Using to create the carousel style
 import 'slick-carousel/slick/slick-theme.css'; // Using to create the carousel style
 
 const CarrosselContainer = styled.div`
-    width: 80%;
-    margin: 20px auto;
+    width: 70%;
+    align-self: center;
 `;
 
 const Slide = styled.div`
     text-align: center;
     padding: 50px;
     transition: transform 0.2s ease-in-out;
-
+    justify-content: center; 
     &:hover {
     transform: scale(1.08);
     }
+    align-items: center;
+    
 `;
 
 const GameCard = styled.div`
-    display: flex;
-    flex-direction: column;
-    {/*align-items: center;
-    justify-content: center;*/}
     width: 185px;
     height: 225px;
     background-color: rgba(255, 255, 255, 0.8);
@@ -36,6 +34,7 @@ const GameCard = styled.div`
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     padding: 10px;
     transition: transform 0.2s ease-in-out;
+
 
     &:hover {
         transform: scale(1.05);
@@ -48,6 +47,8 @@ const GameImage = styled.img`
     border-radius: 10px;
     margin-bottom: 10px;
     align-self: center;
+    align-items: center;
+    
 `;
 
 
@@ -84,7 +85,7 @@ function LatestReleases() {
         <>
         <CarrosselContainer>
             <Title>LATEST RELEASES</Title>
-            <Slider {...settings}>
+            <Slider {...settings} align-items= "center">
                 {games.map(game => (
                     <Slide key={game.id}>
                        <GameCard>

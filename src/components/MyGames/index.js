@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { getMyGames, deleteMyGame } from "../../services/mygames";
-import { Table, Button,GameImage,TableHeader,TableCell,TableRow,Title } from "../Table"
+import { Table, Button,GameImage,TableHeader,TableCell,TableRow,Title, ButtonImg } from "../Table"
 import { ScreenContainer } from "../ContainerScreen"
+import trash from "../../images/trash.svg"
 
 const images = require.context('../../images', false, /\.(jpg)$/);
 
@@ -54,7 +55,9 @@ function MyGames() {
                                     <GameImage src={getImageSrc(game.game_id)} alt={game.name} />
                                 </TableCell>
                                 <TableCell>
-                                    <Button onClick={() => removeMyGame(game.game_id)}>-</Button>
+                                    <Button onClick={() => removeMyGame(game.game_id)}>
+                                        <ButtonImg src= {trash}/>
+                                    </Button>
                                 </TableCell>
                             </TableRow>
                         ))}

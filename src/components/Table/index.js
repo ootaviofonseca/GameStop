@@ -71,3 +71,12 @@ export const Button = styled.button`
         outline: none;
     }
 `;
+export const ButtonImg = styled.img`
+    width: 30px;
+    align-self: center;
+    onmouseover: cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+`;

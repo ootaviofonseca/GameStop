@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { getFavorites, deleteFavorite } from "../../services/favorites";
-import { Table, Button,GameImage,TableHeader,TableCell,TableRow,Title } from "../Table";
+import { Table, Button,GameImage,TableHeader,TableCell,TableRow,Title,ButtonImg } from "../Table";
 import { ScreenContainer } from "../ContainerScreen";
+import trash from "../../images/trash.svg"
 
 
 
@@ -54,7 +55,9 @@ function Favorites() {
                                     <GameImage src={getImageSrc(game.game_id)} alt={game.name} />
                                 </TableCell>
                                 <TableCell>
-                                    <Button onClick={() => removeFavorite(game.game_id)}>-</Button>
+                                    <Button onClick={() => removeFavorite(game.game_id)}>
+                                        <ButtonImg src= {trash}/>
+                                    </Button>
                                 </TableCell>
                             </TableRow>
                         ))}
